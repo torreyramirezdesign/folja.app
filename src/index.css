@@ -1,0 +1,776 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #0B0E14;
+  --surface-color: rgba(25, 30, 40, 0.6);
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  
+  --accent-color: #6366F1;
+  --accent-hover: #4F46E5;
+  
+  /* Status Colors */
+  --status-submitted: rgba(59, 130, 246, 0.15);
+  --status-submitted-text: #60A5FA;
+  --status-interview: rgba(245, 158, 11, 0.15);
+  --status-interview-text: #FBBF24;
+  --status-accepted: rgba(16, 185, 129, 0.15);
+  --status-accepted-text: #34D399;
+  --status-rejection: rgba(239, 68, 68, 0.15);
+  --status-rejection-text: #F87171;
+  
+  /* Yes/No Colors */
+  --status-yes: rgba(16, 185, 129, 0.15);
+  --status-yes-text: #34D399;
+  --status-no: rgba(239, 68, 68, 0.15);
+  --status-no-text: #F87171;
+
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-color);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.08), transparent 25%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App Container */
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.8s ease-out;
+  position: relative;
+}
+
+.header-top {
+  position: absolute;
+  top: -1rem;
+  right: 0;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Form */
+.add-job-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-out 0.2s both;
+}
+
+.input-row {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+
+.show-mobile {
+  display: none;
+}
+
+.input-and-filters {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.job-input {
+  flex: 1;
+  width: 100%;
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  backdrop-filter: blur(10px);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.job-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.job-input::placeholder {
+  color: #6B7280;
+}
+
+.add-button {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.add-button:active {
+  transform: translateY(0);
+}
+
+/* Job List */
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem;
+  color: var(--text-secondary);
+  background: var(--surface-color);
+  border-radius: 16px;
+  border: 1px dashed var(--surface-border);
+}
+
+/* Job Card */
+.job-card {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  animation: slideUp 0.5s ease-out;
+}
+
+.job-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
+}
+
+.job-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.favorite-button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-button:hover {
+  background: rgba(250, 204, 21, 0.1);
+  color: #FACC15;
+}
+
+.favorite-button.is-favorite {
+  color: #FACC15;
+}
+
+.delete-button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+.job-card-categories {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.job-category {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.category-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Dropdown Pill */
+.dropdown-pill-container {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-pill-button {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--surface-border);
+  border-radius: 99px;
+  padding: 0.3rem 0.6rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all var(--transition-fast);
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.dropdown-pill-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-pill-button:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dropdown-pill-icon {
+  transition: transform var(--transition-fast);
+  color: var(--text-secondary);
+}
+
+.dropdown-pill-icon.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-pill-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: 100%;
+  background: #1F2430;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem;
+  list-style: none;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-pill-item {
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  font-size: 0.7rem;
+  text-transform: capitalize;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.dropdown-pill-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.dropdown-pill-item.selected {
+  background: rgba(99, 102, 241, 0.1);
+  color: #818CF8;
+  font-weight: 500;
+}
+
+/* Value specific pill colors */
+.value-application-submitted {
+  background: var(--status-submitted);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--status-submitted-text);
+}
+.value-interview {
+  background: var(--status-interview);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: var(--status-interview-text);
+}
+.value-accepted {
+  background: var(--status-accepted);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--status-accepted-text);
+}
+.value-rejection {
+  background: var(--status-rejection);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--status-rejection-text);
+}
+.value-yes {
+  background: var(--status-yes);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--status-yes-text);
+}
+.value-no {
+  background: var(--status-no);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--status-no-text);
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 0;
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.filter-select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--surface-border);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 0.9em;
+  padding-right: 2rem;
+}
+
+.filter-select:hover, .filter-select:focus {
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.filter-select option {
+  background-color: #1F2430;
+  color: var(--text-primary);
+}
+
+/* Job Title Edit */
+.job-title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.edit-button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.edit-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+.title-edit-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--accent-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  width: 100%;
+  max-width: 300px;
+  outline: none;
+}
+
+/* Comments Section */
+.job-comments {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--surface-border);
+}
+
+.comments-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 60px;
+  transition: all var(--transition-fast);
+}
+
+.comments-textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.comments-textarea::placeholder {
+  color: #6B7280;
+}
+
+.job-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.job-role-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.job-role {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
+}
+
+.edit-button-small {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.edit-button-small:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+.role-edit-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--accent-color);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 250px;
+  outline: none;
+}
+
+/* New Pill Colors */
+.value-in-progress { background: rgba(167, 139, 250, 0.15); border-color: rgba(167, 139, 250, 0.3); color: #C084FC; }
+.value-full-time { background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #38BDF8; }
+.value-part-time { background: rgba(251, 146, 60, 0.15); border-color: rgba(251, 146, 60, 0.3); color: #FB923C; }
+.value-contract { background: rgba(148, 163, 184, 0.15); border-color: rgba(148, 163, 184, 0.3); color: #94A3B8; }
+.value-internship { background: rgba(250, 204, 21, 0.15); border-color: rgba(250, 204, 21, 0.3); color: #FACC15; }
+.value-volunteer { background: rgba(244, 114, 182, 0.15); border-color: rgba(244, 114, 182, 0.3); color: #F472B6; }
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 2rem 1rem;
+  }
+  .app-header h1 {
+    font-size: 2.5rem;
+  }
+  .job-card {
+    padding: 1.25rem 1rem;
+  }
+  .job-card-categories {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .add-job-form {
+    flex-direction: column;
+  }
+  .job-input {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hide-mobile {
+    display: none;
+  }
+  .show-mobile {
+    display: inline;
+  }
+  .add-button {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.25rem;
+  }
+  .filter-select {
+    width: 100%;
+  }
+  .title-edit-input,
+  .role-edit-input {
+    max-width: 100%;
+  }
+}
+
+/* Light Mode */
+body.light-mode {
+  --bg-color: #F9FAFB;
+  --surface-color: #FFFFFF;
+  --surface-border: #D1D5DB;
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --accent-color: #4F46E5;
+  
+  --status-submitted: rgba(59, 130, 246, 0.15);
+  --status-submitted-text: #1D4ED8;
+  --status-interview: rgba(245, 158, 11, 0.2);
+  --status-interview-text: #B45309;
+  --status-accepted: rgba(16, 185, 129, 0.15);
+  --status-accepted-text: #047857;
+  --status-rejection: rgba(239, 68, 68, 0.15);
+  --status-rejection-text: #B91C1C;
+  
+  --status-yes: rgba(16, 185, 129, 0.15);
+  --status-yes-text: #047857;
+  --status-no: rgba(239, 68, 68, 0.15);
+  --status-no-text: #B91C1C;
+}
+
+body.light-mode .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .add-button {
+  color: var(--text-primary);
+  border-color: #D1D5DB;
+  background: #FFFFFF;
+}
+
+body.light-mode .add-button:hover {
+  background: #F3F4F6;
+}
+
+body.light-mode .dropdown-pill-button:not(.has-value),
+body.light-mode .job-input,
+body.light-mode .comments-textarea,
+body.light-mode .filter-select,
+body.light-mode .role-edit-input,
+body.light-mode .title-edit-input {
+  background: #FFFFFF;
+  border-color: #D1D5DB;
+  color: var(--text-primary);
+}
+
+body.light-mode .filter-select option {
+  background-color: #FFFFFF;
+  color: var(--text-primary);
+}
+
+body.light-mode .dropdown-pill-button:not(.has-value):hover,
+body.light-mode .filter-select:hover {
+  background: #F9FAFB;
+}
+
+body.light-mode .dropdown-pill-menu {
+  background: #FFFFFF;
+  border-color: #E5E7EB;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .dropdown-pill-item:hover {
+  background: #F3F4F6;
+}
+
+body.light-mode .dropdown-pill-item.selected {
+  background: rgba(79, 70, 229, 0.1);
+  color: #4338CA;
+}
+
+body.light-mode .job-card {
+  background: #FFFFFF;
+  border-color: #E5E7EB;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .empty-state {
+  background: #FFFFFF;
+  border-color: #D1D5DB;
+}
+
+body.light-mode .edit-button:hover,
+body.light-mode .edit-button-small:hover,
+body.light-mode .delete-button:hover {
+  background: #F3F4F6;
+}
