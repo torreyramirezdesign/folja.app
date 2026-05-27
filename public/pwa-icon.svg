@@ -4,6 +4,8 @@
       <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#ffffff" flood-opacity="0.12" />
     </filter>
   </defs>
+  <!-- Elegant pitch-black background -->
   <rect width="512" height="512" rx="128" fill="#0B0E14" />
+  <!-- Premium Swedish typography -->
   <text x="50%" y="53%" font-family="system-ui, -apple-system, sans-serif" font-size="105" font-weight="800" letter-spacing="-0.04em" fill="#F3F4F6" text-anchor="middle" dominant-baseline="middle" filter="url(#glow)">följa</text>
 </svg>
