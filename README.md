@@ -3,6 +3,8 @@
   
   # följa
 
+  #### [folja.torreyramirez.com](https://folja.torreyramirez.com)
+
   ### /ˈføl.ja/ • Swedish for *"to follow"* or *"to track"*
 
   **följa** is a premium, distraction-free job application tracker designed for modern professionals. Moving away from clunky, uninspired spreadsheet layouts, **följa** brings aesthetic grid-systems, fluid micro-interactions, and visual elegance to your career search.
@@ -17,6 +19,39 @@
 
   ---
 </div>
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-19-39.png" width="49%" alt="Screenshot 1" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-19-52.png" width="49%" alt="Screenshot 2" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-21-05.png" width="49%" alt="Screenshot 3" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-21-14.png" width="49%" alt="Screenshot 4" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-21-29.png" width="49%" alt="Screenshot 5" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-21-42.png" width="49%" alt="Screenshot 6" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-21-55.png" width="49%" alt="Screenshot 7" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-22-08.png" width="49%" alt="Screenshot 8" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-22-23.png" width="49%" alt="Screenshot 9" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-22-30.png" width="49%" alt="Screenshot 10" />
+  <img src="Screenshots/Screenshot%20From%202026-05-28%2018-22-44.png" width="49%" alt="Screenshot 11" />
+</p>
+
+## 📱 Mobile
+
+<p align="center">
+  <img src="mobile%20screenshots/IMG_3399.jpg" width="24%" alt="Mobile Screenshot 1" />
+  <img src="mobile%20screenshots/IMG_3400.PNG" width="24%" alt="Mobile Screenshot 2" />
+  <img src="mobile%20screenshots/IMG_3401.PNG" width="24%" alt="Mobile Screenshot 3" />
+  <img src="mobile%20screenshots/IMG_3402.jpg" width="24%" alt="Mobile Screenshot 4" />
+  <img src="mobile%20screenshots/IMG_3403.jpg" width="24%" alt="Mobile Screenshot 5" />
+  <img src="mobile%20screenshots/IMG_3404.PNG" width="24%" alt="Mobile Screenshot 6" />
+  <img src="mobile%20screenshots/IMG_3405.PNG" width="24%" alt="Mobile Screenshot 7" />
+  <img src="mobile%20screenshots/IMG_3406.jpg" width="24%" alt="Mobile Screenshot 8" />
+  <img src="mobile%20screenshots/IMG_3407.jpg" width="24%" alt="Mobile Screenshot 9" />
+  <img src="mobile%20screenshots/IMG_3408.jpg" width="24%" alt="Mobile Screenshot 10" />
+  <img src="mobile%20screenshots/IMG_3409.jpg" width="24%" alt="Mobile Screenshot 11" />
+  <img src="mobile%20screenshots/IMG_3410.jpg" width="24%" alt="Mobile Screenshot 12" />
+</p>
 
 ## 🌟 Key Features
 

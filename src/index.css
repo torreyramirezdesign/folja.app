@@ -276,6 +276,12 @@ body {
   overflow-wrap: break-word;
   word-break: break-word;
   min-width: 0;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.job-title:hover {
+  color: var(--accent-color);
 }
 
 .job-actions {
@@ -675,6 +681,12 @@ body {
   overflow-wrap: break-word;
   word-break: break-word;
   min-width: 0;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.job-role:hover {
+  color: var(--text-primary);
 }
 
 .edit-button-small {

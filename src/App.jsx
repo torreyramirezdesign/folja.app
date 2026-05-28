@@ -149,7 +149,7 @@ function App() {
    * Updates a single property of a job (like renaming the title or comments).
    */
   const updateJob = (id, field, value) => {
-    setJobs(jobs.map(job => {
+    setJobs(prevJobs => prevJobs.map(job => {
       if (job.id === id) {
         const updated = { ...job, [field]: value };
         // Feature 1: when status changes to 'application submitted', auto change 'applied' to 'yes'

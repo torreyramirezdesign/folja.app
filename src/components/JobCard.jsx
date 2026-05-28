@@ -107,7 +107,7 @@ export default function JobCard({ job, updateJob, deleteJob, zIndex }) {
               />
             ) : (
               // VIEW MODE: Show static text
-              <h3 className="job-title">{job.title}</h3>
+              <h3 className="job-title" onClick={startEditing}>{job.title}</h3>
             )}
           </div>
           
@@ -126,7 +126,7 @@ export default function JobCard({ job, updateJob, deleteJob, zIndex }) {
               />
             ) : (
               // VIEW MODE: Show static role text or placeholder
-              <span className="job-role">{job.role || 'Add job title...'}</span>
+              <span className="job-role" onClick={startEditing}>{job.role || 'Add job title...'}</span>
             )}
           </div>
         </div>
