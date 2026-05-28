@@ -114,6 +114,40 @@ body {
   font-size: 1.1rem;
 }
 
+.footer-data-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.data-action-link {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all var(--transition-fast);
+}
+
+.data-action-link:hover {
+  color: var(--text-primary);
+  text-underline-offset: 5px;
+}
+
+.data-action-link.import-btn {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 /* Form */
 .add-job-form {
   display: flex;
